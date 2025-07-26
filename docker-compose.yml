@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+    postgres-jc-imports:
+        image: postgres:15
+        environment:
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_DB=${DB_DATABASE}
+        volumes:
+            - postgres-jc-imports-db-volume:/var/lib/postgresql/data
+        ports:
+            - ${DB_PORT}:5432
+        networks:
+            - postgres-jc-imports-db-network
+
+volumes:
+    postgres-jc-imports-db-volume:
+
+networks:
+    postgres-jc-imports-db-network:
